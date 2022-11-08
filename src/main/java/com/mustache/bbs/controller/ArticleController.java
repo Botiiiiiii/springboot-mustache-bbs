@@ -21,16 +21,18 @@ public class ArticleController {
 
     private final ArticleRepository articleRepository;
 
-    @GetMapping("/list")
-    public String list(Model model){
-        List<Article> articles =articleRepository.findAll();
-        model.addAttribute("articles",articles);
-        return "list";
-    }
-
     public ArticleController(ArticleRepository articleRepository){
         this.articleRepository = articleRepository;
     }
+
+    @GetMapping("/list")
+    public String list(Model model){
+        List<Article> articles = articleRepository.findAll();
+        model.addAttribute("articles",articles);
+        return "articles/list";
+    }
+
+
 
     @GetMapping(value = "/new")
     public String newArticleForm() {
