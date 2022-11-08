@@ -9,15 +9,15 @@ import lombok.ToString;
 public class ArticleDto {
     private Long id;
     private String title;
-    private String content;
+    private String contents;
 
-    public ArticleDto(Long id, String title, String content) {
+    public ArticleDto(Long id, String title, String contents) {
         this.id = id;
         this.title = title;
-        this.content = content;
+        this.contents = contents;
     }
 
     public Article toEntity() {
-        return new Article(this.title,this.content);
+        return new Article(this.title,this.contents);
     }
 }
