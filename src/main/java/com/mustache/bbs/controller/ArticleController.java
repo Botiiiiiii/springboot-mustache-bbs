@@ -25,14 +25,24 @@ public class ArticleController {
         this.articleRepository = articleRepository;
     }
 
-    @GetMapping("/list")
+    @GetMapping("")
     public String list(Model model){
         List<Article> articles = articleRepository.findAll();
         model.addAttribute("articles",articles);
         return "articles/list";
     }
 
-
+    @GetMapping("/{id}/edit")
+    public String edit(@PathVariable Long id, Model model) {
+        Optional<Article> optionalArticle = articleRepository.findById(id);
+        if (!optionalArticle.isEmpty()) {
+            model.addAttribute("article", optionalArticle.get());
+            return "articles/edit";
+        } else {
+            model.addAttribute("message", String.format("%d가 없습니다.", id));
+            return "articles/error";
+        }
+    }
 
     @GetMapping(value = "/new")
     public String newArticleForm() {
@@ -59,6 +69,14 @@ public class ArticleController {
         log.info("generatedId:{}", savedArticle.getId());
         // souf %d %s
         return String.format("redirect:/articles/%d", savedArticle.getId());
+    }
+
+    @PostMapping("/{id}/update")
+    public String update(@PathVariable Long id, ArticleDto articleDto, Model model) {
+        log.info("title:{} content:{}", articleDto.getTitle(), articleDto.getContents());
+        Article article = articleRepository.save(articleDto.toEntity());
+        model.addAttribute("article", article);
+        return String.format("redirect:/articles/%d", article.getId());
     }
 }
 
