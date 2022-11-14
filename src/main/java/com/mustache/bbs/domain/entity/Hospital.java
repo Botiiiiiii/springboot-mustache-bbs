@@ -1,5 +1,6 @@
 package com.mustache.bbs.domain.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,9 +13,9 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "nation_wide_hospitals")
-@NoArgsConstructor
 @Getter
 public class Hospital {
+
     @Id
     private Integer id;
 //    private String openServiceName;
@@ -25,7 +26,9 @@ public class Hospital {
 //    private Integer businessStatusCode;
 //    private String phone;
 //    private String fullAddress;
-//    private String roadNameAddress;
+    @Column(name = "road_name_address")
+    private String roadNameAddress;
+
     @Column(name = "hospital_name")
     private String hospitalName;
 //    private String businessTypeName;

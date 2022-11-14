@@ -1,15 +1,15 @@
 {{>layouts/header}}
 
     <table class="table">
-        <thead>
+        <thead class="thead-light">
         <tr>
             <th scope="col">id</th>
             <th scope="col">Title</th>
             <th scope="col">Contents</th>
         </tr>
         </thead>
-        <tbody>
         {{#articles}}
+        <tbody>
         <tr>
             <th scope="row">{{id}}</th>
             <td>{{title}}</td>
