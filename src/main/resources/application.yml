@@ -4,12 +4,13 @@ server:
         encoding:
             force-response: true
 spring:
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
         url: ${DB_HOST}
         username: ${DB_USER}
         password: ${DB_PASSWORD}
-    jpa:
-        hibernate:
-            ddl-auto: update
-        show-sql: true
+

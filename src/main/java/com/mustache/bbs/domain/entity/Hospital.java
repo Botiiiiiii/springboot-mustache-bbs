@@ -19,23 +19,16 @@ public class Hospital {
 
     @Id
     private Integer id;
-    //    private String openServiceName;
-//    private Integer openLocalGovernmentCode;
-//    private String managementNumber;
-//    private LocalDateTime licenseDate;
-//    private Integer businessStatus;
-//    private Integer businessStatusCode;
-//    private String phone;
-//    private String fullAddress;
+
     @Column(name = "road_name_address")
     private String roadNameAddress;
 
     @Column(name = "hospital_name")
     private String hospitalName;
     private String businessTypeName;
-    //    private Integer healthcareProviderCount;
     private Integer patientRoomCount;
     private Integer totalNumberOfBeds;
+    private Integer businessStatusCode;
     private float totalAreaSize;
 
     // HospitalEntity를 HospitalResponse Dto로 만들어주는 부분
