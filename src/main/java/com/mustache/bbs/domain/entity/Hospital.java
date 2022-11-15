@@ -1,5 +1,6 @@
 package com.mustache.bbs.domain.entity;
 
+import com.mustache.bbs.domain.HospitalResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,7 +19,7 @@ public class Hospital {
 
     @Id
     private Integer id;
-//    private String openServiceName;
+    //    private String openServiceName;
 //    private Integer openLocalGovernmentCode;
 //    private String managementNumber;
 //    private LocalDateTime licenseDate;
@@ -31,10 +32,17 @@ public class Hospital {
 
     @Column(name = "hospital_name")
     private String hospitalName;
-//    private String businessTypeName;
-//    private Integer healthcareProviderCount;
-//    private Integer patientRoomCount;
-//    private Integer totalNumberOfBeds;
-//    private float totalAreaSize;
+    private String businessTypeName;
+    //    private Integer healthcareProviderCount;
+    private Integer patientRoomCount;
+    private Integer totalNumberOfBeds;
+    private float totalAreaSize;
 
+    // HospitalEntity를 HospitalResponse Dto로 만들어주는 부분
+    public static HospitalResponse of(Hospital hospital) {
+        return new HospitalResponse(hospital.getId(),
+                hospital.getRoadNameAddress(), hospital.getHospitalName(),
+                hospital.getPatientRoomCount(), hospital.getTotalNumberOfBeds(), hospital.getBusinessTypeName(),
+                hospital.getTotalAreaSize());
+    }
 }
